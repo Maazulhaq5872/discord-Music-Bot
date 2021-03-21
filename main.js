@@ -29,12 +29,12 @@ client.on('message', message =>{
     if(command === 'ping'){
         client.commands.get('ping').execute(message, args);
     
-    } /*else if(command === 'play'){
+    } else if(command === 'play'){
         client.commands.get('play').execute(message, args);
     } else if(command === 'leave'){
         client.commands.get('leave').execute(message, args);
     }
-    */
+    
 });
 
 client.login('ODIzMTA5NDI1NjA1OTAyMzQ2.YFcCYw.m0-b9-pN1ONs9iPu2hEBX0BASEc')
