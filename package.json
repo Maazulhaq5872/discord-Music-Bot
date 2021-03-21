@@ -1,0 +1,22 @@
+{
+  "name": "disocord-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maazulhaq5872/disocord-bot.git"
+  },
+  "author": "Maaz-ul-Haque",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maazulhaq5872/disocord-bot/issues"
+  },
+  "homepage": "https://github.com/Maazulhaq5872/disocord-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
+}
