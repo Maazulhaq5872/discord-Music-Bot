@@ -5,7 +5,7 @@ const YtSearch = require('yt-search');
 module.exports = {
     name: 'play',
     description: 'Joins the channel & play',
-    async execute(message, args, client){
+    async execute(message, args){
         const voicechannel = message.member.voice.channel;
 
         if(!voicechannel) return message.channel.send('You should be in a voice channel to run this command');
