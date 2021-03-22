@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'chalaja',
+    name: 'nikal',
     description: 'To stop the bot from playing music and leave the channel',
     async execute(message, args) {
         const voicechannel = message.member.voice.channel;
