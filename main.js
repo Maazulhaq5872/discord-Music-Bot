@@ -9,5 +9,5 @@ client.events = new Discord.Collection();
 	require(`./handlers/${handler}`)(client, Discord);
 })
 
-//client.login('ODIzMTA5NDI1NjA1OTAyMzQ2.YFcCYw.m0-b9-pN1ONs9iPu2hEBX0BASEc') // Original bot
-client.login('ODIzNTYxMTY2MjEwMjAzNjk4.YFinGw.OUm3QISXLYXE2GHAgk8At4qzJzA') // Test bot
+client.login('ODIzMTA5NDI1NjA1OTAyMzQ2.YFcCYw.m0-b9-pN1ONs9iPu2hEBX0BASEc') // Original bot
+// client.login('ODIzNTYxMTY2MjEwMjAzNjk4.YFinGw.OUm3QISXLYXE2GHAgk8At4qzJzA') // Test bot
