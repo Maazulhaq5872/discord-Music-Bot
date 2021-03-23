@@ -1,7 +1,7 @@
 module.exports = {
     name: 'nikal',
     description: 'To stop the bot from playing music and leave the channel',
-    async execute(message, args) {
+    async execute(message, args, client) {
         const voicechannel = message.member.voice.channel;
         if(!voicechannel) return message.channel.send("حضرت پہلے وائس چینل جوئن کریں اسکے بعد کمانڈ دیجئے گا");
         await voicechannel.leave();
