@@ -81,13 +81,24 @@ const musicPlayer = async(guild, song) =>{
 }
 const skipMusic = (message, server_queue)=>{
     if(!message.member.voice.channel) return message.channel.send('Get yourself in a voice channel to run this command');
+    if(!message.guild.voice || !message.guild.voice.channel) return message.channel.send('Not playing any music');
     if(!server_queue){
         return message.channel.send("No songs in the queue!")
     }
-    server_queue.connection.dispatcher.end();
+    if(message.member.voice.channelID === message.guild.voice.channelID) {
+        server_queue.connection.dispatcher.end();
+    } else {
+        return message.channel.send('You are in different channel');
+    }
 }
 const stopMusic = (message, server_queue)=>{
-    if(!message.member.voice.channel) return message.channel.send('Get yourself in a voice channel to run this command');
-    server_queue.songs = [];
-    server_queue.connection.dispatcher.end();
+
+    if(!message.member.voice || !message.member.voice.channel) return message.channel.send('Get yourself in a voice channel to run this command');
+    if(!message.guild.voice || !message.guild.voice.channel) return message.channel.send('Not playing any music');
+    if(message.member.voice.channelID === message.guild.voice.channelID) {
+        server_queue.songs = [];
+        server_queue.connection.dispatcher.end();
+    } else{
+        return message.channel.send('You are in different channel');
+    }
 }
