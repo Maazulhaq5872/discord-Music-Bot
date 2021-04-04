@@ -24,14 +24,9 @@ module.exports = {
                 const song_INFO = await ytdl.getInfo(args[0]);
                 song = {title: song_INFO.videoDetails.title, url: song_INFO.videoDetails.video_url}
             } else {
-                try {
-                    const music_Finder = async (query) =>{
-                        const music_Result = await ytsearch(query);
-                        return (music_Result.videos.length > 1) ? music_Result.videos[0] : null;
-                    }
-                } catch (error) {
-                    console.error(error);
-                    message.reply('there was an error trying to execute that command!');
+                const music_Finder = async (query) =>{
+                    const music_Result = await ytsearch(query);
+                    return (music_Result.videos.length > 1) ? music_Result.videos[0] : null;
                 }
                 const music = await music_Finder(args.join(' '));
                 if(music){
