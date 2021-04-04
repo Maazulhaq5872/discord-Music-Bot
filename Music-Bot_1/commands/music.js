@@ -24,7 +24,7 @@ module.exports = {
                 const song_INFO = await ytdl.getInfo(args[0]);
                 song = {title: song_INFO.videoDetails.title, url: song_INFO.videoDetails.video_url}
             } else {
-                const music_Finder = (query) =>{
+                const music_Finder = async (query) =>{
                     const music_Result = await ytsearch(query);
                     return (music_Result.videos.length > 1) ? music_Result.videos[0] : null;
                 }
