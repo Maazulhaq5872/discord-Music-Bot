@@ -32,13 +32,14 @@ module.exports = {
                         console.error(error);
                         message.reply('there was an error trying to execute that command!');
                     }
+                    const music = await music_Finder(args.join(' '));
+                    if(music){
+                        song = {title : music.title, url: music.url};
+                    } else{
+                        message.channel.send("Can't find any music, Try again")
+                    }
                 }
-                const music = await music_Finder(args.join(' '));
-                if(music){
-                    song = {title : music.title, url: music.url};
-                } else{
-                    message.channel.send("Can't find any music, Try again")
-                }
+                
             }
             if(!server_queue){
                 const queueBuilder = {
