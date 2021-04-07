@@ -1,5 +1,5 @@
 const ytdl = require('ytdl-core');
-const Ytsearch = require('ytsearch');
+const Ytsearch = require('yt-search');
 const { description } = require('./ping');
 
 module.exports = {
