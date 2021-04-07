@@ -15,8 +15,8 @@ module.exports = {
         if(!args.length) return message.channel.send('Pass some arguments biatch');
 
         const connection = await voice_channel.join();
-        const videofinder = async (query) => {
-            const video_Result = await Ytsearch(query);
+        const videofinder = (query) => {
+            const video_Result = Ytsearch(query);
             return (video_Result.videos.length > 1) ? music_Result.videos[0] : null;
         }
         const video = await videofinder(args.join(' '));
