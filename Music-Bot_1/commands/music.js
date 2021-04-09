@@ -4,7 +4,7 @@ const queue = new Map()
 
 module.exports = {
     name: 'play1',
-    aliases: ['skip1', 'stop1'],
+    aliases: ['skip1', 'stop1', 'resume1', 'pause1'],
     description: 'Can Play, Stop, Add Music To Queue',
     async execute(message, args, command, client, Discord){
 
@@ -61,6 +61,8 @@ module.exports = {
         }
         else if(command ==='skip1') skipMusic(message, server_queue);
         else if(command ==='stop1') stopMusic(message, server_queue);
+        else if(command ==='resume1') resumeMusic(message, server_queue);
+        else if(command ==='pause1') pauseMusic(message, server_queue);
     }
 }
 
@@ -98,6 +100,29 @@ const stopMusic = (message, server_queue)=>{
     if(message.member.voice.channelID === message.guild.voice.channelID) {
         server_queue.songs = [];
         server_queue.connection.dispatcher.end();
+    } else{
+        return message.channel.send('You are in different channel');
+    }
+}
+
+const pauseMusic = (message, server_queue)=>{
+    
+    if(!message.member.voice || !message.member.voice.channel) return message.channel.send('Get yourself in a voice channel to run this command');
+    if(!message.guild.voice || !message.guild.voice.channel) return message.channel.send('Not playing any music');
+    if(!server_queue.connection.dispatcher.pause) return message.channel.send('stream already paused');
+    if(message.member.voice.channelID === message.guild.voice.channelID) {
+        server_queue.connection.dispatcher.pause();
+    } else{
+        return message.channel.send('You are in different channel');
+    }
+}
+const resumeMusic = (message, server_queue)=>{
+    
+    if(!message.member.voice || !message.member.voice.channel) return message.channel.send('Get yourself in a voice channel to run this command');
+    if(!message.guild.voice || !message.guild.voice.channel) return message.channel.send('Not playing any music');
+    if(!server_queue.connection.dispatcher.pause) return message.channel.send('stream isn\'t paused');
+    if(message.member.voice.channelID === message.guild.voice.channelID) {
+        server_queue.connection.dispatcher.resume();
     } else{
         return message.channel.send('You are in different channel');
     }
