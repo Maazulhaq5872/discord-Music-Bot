@@ -1,1 +1,1 @@
-worker: node ./Music-bot_1/main.js
+worker: node start.js
