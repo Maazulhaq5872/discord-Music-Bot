@@ -4,7 +4,7 @@ const queue = new Map()
 
 module.exports = {
     name: 'play2',
-    aliases: ['skip2', 'stop2'],
+    aliases: ['skip2', 'stop2', 'pause2', 'resume2'],
     description: 'Can Play, Stop, Add Music To Queue',
     async execute(message, args, command, client, Discord){
 
