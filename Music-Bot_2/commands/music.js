@@ -61,6 +61,8 @@ module.exports = {
         }
         else if(command ==='skip2') skipMusic(message, server_queue);
         else if(command ==='stop2') stopMusic(message, server_queue);
+        else if(command ==='resume1') resumeMusic(message, server_queue);
+        else if(command ==='pause1') pauseMusic(message, server_queue);
     }
 }
 
@@ -86,6 +88,8 @@ const skipMusic = (message, server_queue)=>{
         return message.channel.send("No songs in the queue!")
     }
     if(message.member.voice.channelID === message.guild.voice.channelID) {
+        //Work Around
+        server_queue.connection.dispatcher.resume()
         server_queue.connection.dispatcher.end();
     } else {
         return message.channel.send('You are in different channel');
@@ -97,8 +101,33 @@ const stopMusic = (message, server_queue)=>{
     if(!message.guild.voice || !message.guild.voice.channel) return message.channel.send('Not playing any music');
     if(message.member.voice.channelID === message.guild.voice.channelID) {
         server_queue.songs = [];
+        //Work Around
+        server_queue.connection.dispatcher.resume()
         server_queue.connection.dispatcher.end();
     } else{
         return message.channel.send('You are in different channel');
     }
+}
+
+const pauseMusic = (message, server_queue)=>{
+    
+    if(!message.member.voice || !message.member.voice.channel) return message.channel.send('Get yourself in a voice channel to run this command');
+    if(!message.guild.voice || !message.guild.voice.channel) return message.channel.send('Not playing any music');
+    if(message.member.voice.channelID !== message.guild.voice.channelID) return message.channel.send('You are in different channel');
+    if(server_queue.connection.dispatcher.paused) return message.channel.send('stream already paused');
+    server_queue.connection.dispatcher.pause();
+    message.channel.send("Stream Paused")
+}
+
+const resumeMusic = (message, server_queue)=>{
+    
+    if(!message.member.voice || !message.member.voice.channel) return message.channel.send('Get yourself in a voice channel to run this command');
+    if(!message.guild.voice || !message.guild.voice.channel) return message.channel.send('Not playing any music');
+    if(message.member.voice.channelID !== message.guild.voice.channelID) return message.channel.send('You are in different channel');
+    if(!server_queue.connection.dispatcher.paused) return message.channel.send('stream isn\'t paused');
+    server_queue.connection.dispatcher.resume();
+    //Work Around    
+    server_queue.connection.dispatcher.pause();
+    server_queue.connection.dispatcher.resume();
+    message.channel.send("Stream resumed");
 }
