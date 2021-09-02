@@ -61,8 +61,8 @@ module.exports = {
         }
         else if(command ==='skip2') skipMusic(message, server_queue);
         else if(command ==='stop2') stopMusic(message, server_queue);
-        else if(command ==='resume1') resumeMusic(message, server_queue);
-        else if(command ==='pause1') pauseMusic(message, server_queue);
+        else if(command ==='resume2') resumeMusic(message, server_queue);
+        else if(command ==='pause2') pauseMusic(message, server_queue);
     }
 }
 
