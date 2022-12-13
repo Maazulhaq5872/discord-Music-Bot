@@ -1,0 +1,1 @@
+var bot = require('./Music-Bot_2/main');
