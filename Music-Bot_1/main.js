@@ -9,7 +9,7 @@ client.events = new Discord.Collection();
 	require(`./handlers/${handler}`)(client, Discord);
 })
 
-client.login('ODIzNTYxMTY2MjEwMjAzNjk4.YFinGw.OUm3QISXLYXE2GHAgk8At4qzJzA') // Test bot
+client.login('<Enter Your Token Here>') // Test bot
 
 
 
